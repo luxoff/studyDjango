@@ -1,6 +1,7 @@
 from django.http.request import *
 from django.http.response import *
+from django.shortcuts import render
 
 
 def hello(request):
-    return HttpResponse('<h1>Hello World!</h1>')
+    return render(request, 'base.html')
