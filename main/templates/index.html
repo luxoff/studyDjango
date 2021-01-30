@@ -4,13 +4,19 @@
     <section id="home">
         <div class="container">
             <div class="row">
-                <div class="col">
-                </div>
-                <div class="col">
-                    Hello
-                </div>
-                <div class="col">
-                </div>
+                {% for item in categories %}
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>{{ item.title }}</h2>
+                        {% for menu_item in item.items %}
+                            <div>
+                                <div><h3>{{ menu_item.title }}</h3></div>
+                                <div><p>{{ menu_item.description }}</p></div>
+                                <div><p>{{ menu_item.price }} &#8372;</p></div>
+                                <div><img src="{{ menu_item.photo.url }}"></img></div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>
