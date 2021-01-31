@@ -1,36 +1,10 @@
 body{
-    font-family: Poppins;
+    font-family: Nunito;
 
     color: #444444;
 }
 
-/*--------------------------------------------------------------
-# Top Bar
---------------------------------------------------------------*/
-#topbar {
-  padding: 0;
-  font-size: 15px;
-  height: 50px;
-  transition: all 0.5s;
-  background: rgba(26, 24, 22, 0.8);
-  color: rgba(255, 255, 255, 0.7);
-}
 
-#topbar.topbar-transparent {
-  background: transparent;
-}
-
-#topbar.topbar-scrolled {
-  top: -50px;
-}
-
-#topbar i {
-  color: #ffb03b;
-}
-
-#topbar i + i {
-  margin-left: 15px;
-}
 
 /*--------------------------------------------------------------
 # Navigation Menu

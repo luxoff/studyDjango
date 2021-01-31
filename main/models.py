@@ -33,3 +33,33 @@ class MenuItem(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+
+class Event(models.Model):
+    def get_file_name_events(self, filename):
+        ext = filename.split('.')[-1]
+        filename = f'{uuid4()}.{ext}'
+        return os.path.join('images/events/', filename)
+
+    title = models.CharField(max_length=50)
+    photo = models.ImageField(upload_to=get_file_name_events)
+    description = models.TextField(null=True)
+    event_date = models.DateTimeField()
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+
+    def __str__(self):
+        return f'{self.title} @ {self.event_date}'
+
+
+class Banner(models.Model):
+    def get_file_name_banners(self, filename):
+        ext = filename.split('.')[-1]
+        filename = f'{uuid4()}.{ext}'
+        return os.path.join('images/banners/', filename)
+
+    title = models.CharField(max_length=50)
+    photo = models.ImageField(upload_to=get_file_name_banners)
+    text = models.TextField(null=True)
+    is_visible = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.title}'
