@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card" style="width: 18rem;" >
+        <img class="card-img-top img-responsive"
+             src="{{ menu_item.photo.url }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"><a href="/menu/{{ menu_item.pk }}">{{ menu_item.title }}</a></h5>
+            <p class="card-text">{{ menu_item.description }}</p>
+            <p><strong>{{ menu_item.price }} &#x20B4;</strong></p>
+        </div>
+    </div>
+{% endblock %}

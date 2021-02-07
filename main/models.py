@@ -63,3 +63,15 @@ class Banner(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+
+class UsersMessages(models.Model):
+    user_name = models.CharField(max_length=50)
+    user_email = models.EmailField()
+    message = models.CharField(max_length=300)
+
+    is_processed = models.BooleanField(default=False)
+    sent_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user_name}, {self.user_email} написав: {self.message[:15]}...'

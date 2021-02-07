@@ -1,8 +1,7 @@
 from datetime import *
-
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 from .models import Category, MenuItem, Event, Banner
+from .forms import UserMessageForm
 
 
 def main(request):
@@ -20,7 +19,18 @@ def main(request):
 
     banners = Banner.objects.filter(is_visible=True)
 
+    if request.method == 'POST':
+        form = UserMessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/#')
 
+    users_messages_form = UserMessageForm()
     # В {} передаём переменные (контекст) в разметку
-    return render(request, 'index.html', {'page_title': page_title, 'categories': categories,
-                                          'special_categories': special_categories, 'events': events, 'banners': banners})
+    return render(request, 'index.html', {'page_title': page_title,
+                                          'categories': categories,
+                                          'special_categories': special_categories,
+                                          'events': events,
+                                          'banners': banners,
+                                          'form': users_messages_form,
+                                          })

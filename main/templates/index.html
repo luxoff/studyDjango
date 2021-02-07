@@ -69,7 +69,8 @@
                                 <img class="card-img-top img-responsive"
                                      src="{{ menu_item.photo.url }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ menu_item.title }}</h5>
+                                    <h5 class="card-title"><a href="/menu/{{ menu_item.pk }}">{{ menu_item.title }}</a>
+                                    </h5>
                                     <p class="card-text">{{ menu_item.description }}</p>
                                     <p><strong>{{ menu_item.price }} &#x20B4;</strong></p>
                                 </div>
@@ -100,6 +101,31 @@
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="contactus">
+        <div class="container">
+            <h1 class="text-center text-uppercase">Зв'язатись з нами</h1>
+            <hr>
+            <div class="row justify-content-center mt-2 mb-2">
+                <form name="sendMessage" id="contactForm" novalidate action="" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.user_name }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.user_email }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.message }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-lg">Відправити повідомлення</button>
+                </form>
             </div>
         </div>
     </section>
