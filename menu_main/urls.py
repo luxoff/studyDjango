@@ -3,5 +3,6 @@ from .views import *
 
 
 urlpatterns = [
-    path('<int:pk>', menuItem_info)
+    path('<int:pk>', menuItem_info),
+    path('addcat/', add_category)
 ]

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center mt-2 mb-2">
+            <form name="addCategory" id="addCategoryForm" novalidate action="" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.title }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.category_order }}
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="is_visible">Видно на сайті</label>
+                        {{ form.is_visible }}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="is_special">Спеціальне меню</label>
+                        {{ form.is_special }}
+                    </div>
+                </div><br>
+                <button type="submit" class="btn btn-dark">Додати категорію</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
