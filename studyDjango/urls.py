@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from accounts.views import login_view, register_view, logout_view
 from studyDjango import settings
 from django.conf.urls.static import static
 
@@ -22,7 +24,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('menu/', include('menu_main.urls')),
-    path('users_messages/', include('users_messages.urls'))
+    path('users_messages/', include('users_messages.urls')),
+
+    path('signin/', login_view, name='login'),
+    path('signup/', register_view, name='register'),
+    path('logout/', logout_view, name='logout'),
 ]
 
 if settings.DEBUG:

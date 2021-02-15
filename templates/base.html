@@ -10,7 +10,8 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
+          rel="stylesheet">
 </head>
 <body>
 <header>
@@ -20,20 +21,41 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto p-1">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#home">Про нас</a>
-                </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#specials">Гарячі пропозиції</a>
+                    <a class="nav-link" href="/#home">Про нас</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#menu">Меню</a>
+                    <a class="nav-link" href="/#specials">Гарячі пропозиції</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#menu">Меню</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/#events">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contactus">Зв'язатись з нами</a>
+                    <a class="nav-link" href="/#contactus">Зв'язатись з нами</a>
                 </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Особистий кабінет
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Мій профіль</a></li>
+                            {% if 'manager' in user.groups.all.0.name or user.is_staff %}
+                                <li><a class="dropdown-item" href="#">Редагувати меню</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="/logout">Вихід</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-dark" role="button" href="/signin" id="signInBtn" aria-expanded="false">
+                            Вхід
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

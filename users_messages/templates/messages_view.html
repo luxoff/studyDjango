@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if 'manager' in user.groups.all.0.name or user.is_staff %}
     <div class="container">
         <h3>Повідомлення від користувачів</h3>
         <hr>
@@ -70,4 +71,5 @@
             </div>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
