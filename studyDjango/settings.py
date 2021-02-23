@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = '#=uj5*06jjl$hb_1)t(9ty2knk&4wqjjwuyt)=f=g8@-98bdo^'
-SECRET_KEY = SECRET_KEY
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -70,7 +70,7 @@ ROOT_URLCONF = 'studyDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [BASE_DIR + '/templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
